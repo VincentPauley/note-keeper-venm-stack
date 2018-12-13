@@ -1,7 +1,7 @@
 {
   "name": "vue-full-stack-start",
   "version": "1.0.0",
-  "description": "Fork to quickly setup a Vue JS full-stack application",
+  "description": "App for storing Tech notes and quick quizes",
   "main": "index.js",
   "scripts": {
     "build": "webpack --watch",
@@ -14,7 +14,7 @@
   "keywords": [
     "vue",
     "full-stack",
-    "setup"
+    "notes"
   ],
   "author": "Vincent Pauley",
   "license": "MIT",
