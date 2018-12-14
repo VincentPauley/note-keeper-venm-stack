@@ -1,13 +1,24 @@
 <template>
-    <div>
-        <label>Note Title</label>
-        <input type="text" class="form-control" v-model="note_title">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">New Note</h5>
+            <form>
+                <div class="form-group">
+                    <label>Note Title</label>
+                    <input type="text" class="form-control" v-model="note_title">
+                </div>
 
-        <label>Note Body</label>
-        <textarea class="form-control" v-model="note_body"></textarea>
+                <div class="form-group">
+                    <label>Note Body</label>
+                    <textarea class="form-control" v-model="note_body"></textarea>    
+                </div>
 
-        <button type="button" class="btn btn-primary" v-on:click="handle_new_note_submit">Add Note</button>
-    </div>    
+                <div id="button-wrapper" class="form-group">
+                    <button type="button" class="btn btn-primary pull-right" v-on:click="handle_new_note_submit">Add Note</button>    
+                </div>    
+            </form>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -40,3 +51,10 @@
         }
     }
 </script>
+
+<style>
+
+    #button-wrapper {
+        text-align: right;
+    }
+</style>
