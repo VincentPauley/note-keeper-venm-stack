@@ -1,10 +1,31 @@
 <template>
   <div class="container">
     <h1>{{ header }}</h1>
-    <note-input></note-input>
 
-    <single-note-display v-for="note in existing_notes" :note="note" :key="note.title"></single-note-display>
-    <!-- <p>{{ existing_notes }}</p> -->
+    <nav class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+            <router-link to="/">
+                <a class="navbar-brand" href="#">NoteKeeper</a>
+            </router-link>
+            
+            <ul class="navbar-nav">
+
+                <router-link tag="li" to="/notes"
+                    class="nav-item"
+                >
+                    <a class="nav-link" href="#">Notes</a>
+                </router-link>
+
+                <router-link tag="li" to="/new-note"
+                    class="nav-item"
+                >
+                    <a class="nav-link" href="#">New Note</a>
+                </router-link>
+            </ul>
+        </div>
+    </nav>
+
+    <router-view></router-view>   
   </div>
 </template>
 
@@ -16,7 +37,6 @@
 
     // components
     import NoteInput from './components/NoteInput.vue';
-    import SingleNoteDisplay from './components/SingleNoteDisplay.vue';
 
     export default {
         data() {
@@ -48,18 +68,9 @@
                         alert( 'POST failed to submit note' );
                     }
 
-            },
-            fetch_existing_notes: async function() {
-
-                const all_notes = await axios.get( '/notes' );
-
-                if( typeof all_notes === 'object' && all_notes.status === 200 ) {
-
-                    this.existing_notes = all_notes.data.notes;
-                }
             }
         },
-        components: { NoteInput, SingleNoteDisplay },
+        components: { NoteInput },
         created() {
 
             let root = this;
@@ -68,8 +79,6 @@
 
                 root.add_new_note( noteDetails );
             });
-
-            this.fetch_existing_notes();
         }
     }
 </script>
